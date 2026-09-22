@@ -1,0 +1,964 @@
+ <!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Ankit Exam Hub | UPSSSC PET</title>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <div class="app-shell">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+      <div class="brand">
+       <div class="brand-logo">♛</div>
+
+        <div>
+          <h2>Ankit Exam Hub</h2>
+          <span>UPSSSC PET</span>
+        </div>
+      </div>
+
+      <nav class="nav-menu">
+
+        <button class="nav-item active" data-nav="home">
+          🏠 <span>Dashboard</span>
+        </button>
+
+        <button class="nav-item" data-nav="practice">
+          📝 <span>Practice Quiz</span>
+        </button>
+
+        <button class="nav-item" data-nav="revision">
+          🔄 <span>Revision</span>
+        </button>
+
+        <button class="nav-item" data-nav="syllabus">
+          📚 <span>Syllabus</span>
+        </button>
+
+        <button class="nav-item" data-nav="results">
+          🏆 <span>Results</span>
+        </button>
+
+        <button class="nav-item" data-nav="profile">
+          👤 <span>Profile</span>
+        </button>
+
+        <button class="nav-item" data-nav="admin">
+          ⚙️ <span>Admin Panel</span>
+        </button>
+
+      </nav>
+
+      <div class="sidebar-bottom">
+        <div class="creator-mini">
+          <img
+            id="sidebarAvatar"
+            src="Ankit.jpg"
+            alt="Ankit"
+            onerror="this.src='';this.classList.add('photo-error')"
+          >
+
+          <div>
+            <b>Ankit Pal</b>
+            <small>Creator</small>
+          </div>
+        </div>
+      </div>
+
+    </aside>
+
+
+    <!-- MAIN -->
+    <main class="main-content">
+
+      <!-- TOP BAR -->
+      <header class="topbar">
+
+        <div class="mobile-brand">
+          <b>Ankit Exam Hub</b>
+        </div>
+
+        <div class="search-box">
+          🔎
+          <input
+            id="searchInput"
+            type="search"
+            placeholder="Question या topic search करें..."
+          >
+        </div>
+
+        <button
+          class="top-profile"
+          onclick="showView('profile')"
+        >
+          <img
+            id="headerAvatar"
+            src="Ankit.jpg"
+            alt="Profile"
+          >
+        </button>
+
+      </header>
+
+
+      <!-- ================= HOME ================= -->
+      <section id="homeView" data-view="home">
+
+        <div class="hero">
+
+          <div class="hero-content">
+
+            <div class="eyebrow">
+              ✨ UPSSSC PET PREPARATION
+            </div>
+
+            <h1>
+              पढ़ाई अब होगी
+              <span>Smart & Easy</span>
+            </h1>
+
+            <p>
+              25,000+ PET practice questions,
+              quizzes, revision और results —
+              एक ही जगह।
+            </p>
+
+            <div class="hero-buttons">
+
+              <button
+                class="primary-btn"
+                onclick="startPracticeQuiz()"
+              >
+                🚀 Practice शुरू करें
+              </button>
+
+              <button
+                class="secondary-btn"
+                onclick="showView('syllabus')"
+              >
+                📚 Syllabus देखें
+              </button>
+
+            </div>
+
+          </div>
+
+          <div class="hero-visual">
+
+            <div class="glow-orb orb-one"></div>
+            <div class="glow-orb orb-two"></div>
+
+            <div class="hero-card">
+
+              <div class="hero-card-icon">🎯</div>
+
+              <b>25,000+</b>
+
+              <span>PET Questions</span>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <!-- STATS -->
+        <div class="stats-grid">
+
+          <div class="stat-card pink">
+            <span>📚</span>
+            <b id="totalQuestionCount">25,000+</b>
+            <small>Total Questions</small>
+          </div>
+
+          <div class="stat-card blue">
+            <span>⭐</span>
+            <b id="bookmarkCount">0</b>
+            <small>Bookmarks</small>
+          </div>
+
+          <div class="stat-card purple">
+            <span>❌</span>
+            <b id="wrongCount">0</b>
+            <small>Revision Questions</small>
+          </div>
+
+          <div class="stat-card green">
+            <span>🎯</span>
+            <b id="accuracyCount">0%</b>
+            <small>Accuracy</small>
+          </div>
+
+        </div>
+
+
+        <!-- LEVELS -->
+        <div class="section-heading">
+
+          <div>
+            <span class="section-label">YOUR LEVEL</span>
+            <h2>Practice Level</h2>
+          </div>
+
+          <button
+            class="text-btn"
+            onclick="showView('practice')"
+          >
+            सभी Questions →
+          </button>
+
+        </div>
+
+
+        <div class="level-grid">
+
+          <button
+            class="level-card beginner"
+            onclick="state.filters.level='Beginner';showView('practice')"
+          >
+
+            <div class="level-icon">🌱</div>
+
+            <div>
+              <b>Beginner</b>
+              <span>आसान Questions</span>
+            </div>
+
+            <strong>START →</strong>
+
+          </button>
+
+
+          <button
+            class="level-card medium"
+            onclick="state.filters.level='Medium';showView('practice')"
+          >
+
+            <div class="level-icon">🔥</div>
+
+            <div>
+              <b>Medium</b>
+              <span>मध्यम Questions</span>
+            </div>
+
+            <strong>START →</strong>
+
+          </button>
+
+
+          <button
+            class="level-card advanced"
+            onclick="state.filters.level='Advanced';showView('practice')"
+          >
+
+            <div class="level-icon">🚀</div>
+
+            <div>
+              <b>Advanced</b>
+              <span>कठिन Questions</span>
+            </div>
+
+            <strong>START →</strong>
+
+          </button>
+
+        </div>
+
+
+        <!-- SUBJECTS -->
+        <div class="section-heading">
+
+          <div>
+            <span class="section-label">PET SYLLABUS</span>
+            <h2>Subjects & Topics</h2>
+          </div>
+
+          <span class="topic-count">
+            15 Subjects
+          </span>
+
+        </div>
+
+        <div
+          id="subjectGrid"
+          class="subject-grid"
+        ></div>
+
+
+        <!-- RECENT -->
+        <div class="section-heading">
+
+          <div>
+            <span class="section-label">ACTIVITY</span>
+            <h2>Recent Results</h2>
+          </div>
+
+          <button
+            class="text-btn"
+            onclick="showView('results')"
+          >
+            सभी देखें →
+          </button>
+
+        </div>
+
+        <div
+          id="recentResults"
+          class="recent-results"
+        ></div>
+
+      </section>
+
+
+      <!-- ================= PRACTICE ================= -->
+
+      <section
+        id="practiceView"
+        data-view="practice"
+        class="hidden"
+      >
+
+        <div class="page-title">
+
+          <div>
+            <span class="section-label">
+              PRACTICE
+            </span>
+
+            <h1>Practice Quiz</h1>
+
+            <p>
+              Subject और level चुनकर practice करें।
+            </p>
+          </div>
+
+          <button
+            class="primary-btn"
+            onclick="startPracticeQuiz()"
+          >
+            🚀 Quiz Start करें
+          </button>
+
+        </div>
+
+
+        <div class="filters">
+
+          <select id="subjectFilter">
+
+            <option value="all">
+              सभी Subjects
+            </option>
+
+            <option value="history">
+              भारतीय इतिहास
+            </option>
+
+            <option value="movement">
+              राष्ट्रीय आंदोलन
+            </option>
+
+            <option value="geography">
+              भूगोल
+            </option>
+
+            <option value="economy">
+              अर्थव्यवस्था
+            </option>
+
+            <option value="polity">
+              संविधान
+            </option>
+
+            <option value="science">
+              विज्ञान
+            </option>
+
+            <option value="math">
+              गणित
+            </option>
+
+            <option value="hindi">
+              हिन्दी
+            </option>
+
+            <option value="english">
+              English
+            </option>
+
+            <option value="reasoning">
+              Reasoning
+            </option>
+
+          </select>
+
+
+          <select id="levelFilter">
+
+            <option value="all">
+              सभी Levels
+            </option>
+
+            <option value="Beginner">
+              Beginner
+            </option>
+
+            <option value="Medium">
+              Medium
+            </option>
+
+            <option value="Advanced">
+              Advanced
+            </option>
+
+          </select>
+
+
+          <div class="question-total">
+            <b id="filteredQuestionCount">
+              25,000
+            </b>
+            Questions
+          </div>
+
+        </div>
+
+
+        <div
+          id="practiceList"
+          class="question-list"
+        ></div>
+
+      </section>
+
+
+      <!-- ================= REVISION ================= -->
+
+      <section
+        id="revisionView"
+        data-view="revision"
+        class="hidden"
+      >
+
+        <div class="page-title">
+
+          <div>
+            <span class="section-label">
+              REVISION
+            </span>
+
+            <h1>Revision Center</h1>
+
+            <p>
+              गलत और bookmarked questions दोबारा पढ़ें।
+            </p>
+          </div>
+
+        </div>
+
+
+        <div class="revision-tabs">
+
+          <h2>❌ गलत Questions</h2>
+
+          <div
+            id="revisionList"
+            class="question-list"
+          ></div>
+
+
+          <h2 class="revision-heading">
+            ⭐ Bookmarked Questions
+          </h2>
+
+          <div
+            id="bookmarkList"
+            class="question-list"
+          ></div>
+
+        </div>
+
+      </section>
+
+
+      <!-- ================= SYLLABUS ================= -->
+
+      <section
+        id="syllabusView"
+        data-view="syllabus"
+        class="hidden"
+      >
+
+        <div class="page-title">
+
+          <div>
+            <span class="section-label">
+              UPSSSC PET
+            </span>
+
+            <h1>PET Syllabus</h1>
+
+            <p>
+              15 important subjects/topics।
+            </p>
+          </div>
+
+        </div>
+
+        <div
+          id="syllabusList"
+          class="syllabus-grid"
+        ></div>
+
+      </section>
+
+
+      <!-- ================= RESULTS ================= -->
+
+      <section
+        id="resultsView"
+        data-view="results"
+        class="hidden"
+      >
+
+        <div class="page-title">
+
+          <div>
+            <span class="section-label">
+              PERFORMANCE
+            </span>
+
+            <h1>My Results</h1>
+
+            <p>
+              आपके सभी quiz results।
+            </p>
+          </div>
+
+          <button
+            class="secondary-btn"
+            data-download-results
+          >
+            ⬇ Download Results
+          </button>
+
+        </div>
+
+        <div
+          id="resultsList"
+          class="results-list"
+        ></div>
+
+      </section>
+
+
+      <!-- ================= PROFILE ================= -->
+
+      <section
+        id="profileView"
+        data-view="profile"
+        class="hidden"
+      >
+
+        <div class="page-title">
+
+          <div>
+            <span class="section-label">
+              MY ACCOUNT
+            </span>
+
+            <h1>Profile</h1>
+
+            <p>
+              अपनी study profile तैयार करें।
+            </p>
+          </div>
+
+        </div>
+
+
+        <div class="profile-card">
+
+          <div class="profile-photo-area">
+
+            <div
+              class="profile-photo-box"
+              onclick="openPhotoPopup()"
+            >
+
+              <img
+                id="profileAvatar"
+                src="Ankit.jpg"
+                alt="Profile Photo"
+              >
+
+              <span class="photo-zoom">
+                🔍
+              </span>
+
+            </div>
+
+            <label
+              class="upload-btn"
+              for="photoUpload"
+            >
+              📷 Photo लगाएँ
+            </label>
+
+            <input
+              id="photoUpload"
+              type="file"
+              accept="image/*"
+              hidden
+            >
+
+            <button
+              class="remove-photo"
+              onclick="removeUserPhoto()"
+            >
+              Photo हटाएँ
+            </button>
+
+            <small>
+              Photo 4×4 square में दिखाई जाएगी।
+            </small>
+
+          </div>
+
+
+          <div class="profile-form">
+
+            <label>
+              नाम
+              <input
+                id="profileName"
+                type="text"
+                placeholder="अपना नाम"
+              >
+            </label>
+
+            <label>
+              जन्म तिथि
+              <input
+                id="profileDob"
+                type="date"
+              >
+            </label>
+
+            <label>
+              Qualification
+              <input
+                id="profileQualification"
+                type="text"
+                placeholder="जैसे B.Com"
+              >
+            </label>
+
+            <label>
+              City
+              <input
+                id="profileCity"
+                type="text"
+                placeholder="जैसे Etawah"
+              >
+            </label>
+
+            <label>
+              State
+              <input
+                id="profileState"
+                type="text"
+                placeholder="जैसे Uttar Pradesh"
+              >
+            </label>
+
+            <label>
+              Family Member Name
+              <input
+                id="profileFamilyName"
+                type="text"
+                placeholder="नाम"
+              >
+            </label>
+
+            <label>
+              Relation
+              <input
+                id="profileRelation"
+                type="text"
+                placeholder="जैसे Father"
+              >
+            </label>
+
+            <button
+              class="primary-btn save-profile"
+              onclick="saveProfile()"
+            >
+              💾 Profile Save करें
+            </button>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- ================= ADMIN ================= -->
+
+      <section
+        id="adminView"
+        data-view="admin"
+        class="hidden"
+      >
+
+        <div class="page-title">
+
+          <div>
+            <span class="section-label">
+              CONTROL CENTER
+            </span>
+
+            <h1>Admin Panel</h1>
+
+            <p>
+              Website permissions control करें।
+            </p>
+          </div>
+
+          <button
+            class="primary-btn"
+            onclick="openAdminLogin()"
+          >
+            🔐 Admin Login
+          </button>
+
+        </div>
+
+
+        <div class="admin-card">
+
+          <div class="admin-status">
+            <span>Status</span>
+
+            <b id="adminStatus">
+              Admin locked
+            </b>
+          </div>
+
+
+          <div class="permission-row">
+
+            <div>
+              <b>📸 Screenshot Permission</b>
+              <small>
+                User screenshot ले सकता है या नहीं।
+              </small>
+            </div>
+
+            <label class="switch">
+
+              <input
+                id="screenshotsPermission"
+                type="checkbox"
+              >
+
+              <span></span>
+
+            </label>
+
+          </div>
+
+
+          <div class="permission-row">
+
+            <div>
+              <b>⬇ Download Permission</b>
+              <small>
+                User result download कर सकता है या नहीं।
+              </small>
+            </div>
+
+            <label class="switch">
+
+              <input
+                id="downloadsPermission"
+                type="checkbox"
+              >
+
+              <span></span>
+
+            </label>
+
+          </div>
+
+
+          <div class="admin-actions">
+
+            <button
+              class="secondary-btn"
+              onclick="openAdminLogin()"
+            >
+              🔑 Admin PIN
+            </button>
+
+            <button
+              class="danger-btn"
+              onclick="adminLogout()"
+            >
+              Logout
+            </button>
+
+          </div>
+
+
+          <div class="admin-note">
+            ⚠️ Browser वाली screenshot/download रोकने की
+            permission केवल basic frontend control है।
+          </div>
+
+        </div>
+
+      </section>
+
+    </main>
+
+  </div>
+
+
+  <!-- ================= QUIZ MODAL ================= -->
+
+  <div
+    id="quizModal"
+    class="modal hidden"
+  >
+
+    <div class="quiz-modal-box">
+
+      <div class="quiz-top">
+
+        <div>
+
+          <small id="quizSubject">
+            PET
+          </small>
+
+          <h2 id="quizTitle">
+            Practice Quiz
+          </h2>
+
+        </div>
+
+        <button
+          id="quizClose"
+          class="close-btn"
+        >
+          ×
+        </button>
+
+      </div>
+
+
+      <div class="quiz-info">
+
+        <span id="quizProgress">
+          1/20
+        </span>
+
+        <span id="quizLevel">
+          Beginner
+        </span>
+
+        <strong id="quizTimer">
+          02:00
+        </strong>
+
+      </div>
+
+
+      <div class="quiz-question-area">
+
+        <div class="question-number">
+          Question
+          <span id="quizQuestionNumber">
+            1/20
+          </span>
+        </div>
+
+        <h2 id="quizQuestion">
+          Question loading...
+        </h2>
+
+        <div
+          id="quizOptions"
+          class="quiz-options"
+        ></div>
+
+      </div>
+
+
+      <div
+        id="quizResult"
+        class="quiz-result hidden"
+      ></div>
+
+
+      <div class="quiz-bottom">
+
+        <button
+          id="quizPrev"
+          class="secondary-btn"
+        >
+          ← Previous
+        </button>
+
+        <button
+          id="quizNext"
+          class="primary-btn"
+        >
+          Next →
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- ================= PHOTO MODAL ================= -->
+
+  <div
+    id="photoModal"
+    class="photo-modal hidden"
+  >
+
+    <button
+      class="photo-close"
+      onclick="closePhotoPopup()"
+    >
+      ×
+    </button>
+
+    <img
+      id="photoModalImage"
+      src="Ankit.jpg"
+      alt="Large Photo"
+    >
+
+  </div>
+
+
+  <script src="script.js"></script>
+
+</body>
+</html>
